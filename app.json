@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ColorCatalog",
-    "slug": "ColorCatalog",
-    "version": "1.0.0",
+    "name": "Thesios",
+    "slug": "Thesios",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
