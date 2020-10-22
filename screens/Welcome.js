@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import {
-  Animated,
   Dimensions,
   Image,
-  FlatList,
   Modal,
-  StyleSheet,
   ScrollView
 } from "react-native";
 
@@ -16,10 +13,8 @@ const { width, height } = Dimensions.get("window");
 
 class Welcome extends Component {
     static navigationOptions = {
-      header: null
+      headerShown: false
     };
-  
-    scrollX = new Animated.Value(0);
   
     state = {
       showTerms: false
@@ -162,62 +157,6 @@ class Welcome extends Component {
       );
     }
   
-    renderIllustrations() {
-      const { illustrations } = this.props;
-  
-      return (
-        <FlatList
-          horizontal
-          pagingEnabled
-          scrollEnabled
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          snapToAlignment="center"
-          data={illustrations}
-          extraDate={this.state}
-          keyExtractor={(item, index) => `${item.id}`}
-          renderItem={({ item }) => (
-            <Image
-              source={item.source}
-              resizeMode="contain"
-              style={{ width, height: height / 2, overflow: "visible" }}
-            />
-          )}
-          onScroll={Animated.event([
-            {
-              nativeEvent: { contentOffset: { x: this.scrollX } }
-            }
-          ])}
-        />
-      );
-    }
-  
-    renderSteps() {
-      const { illustrations } = this.props;
-      const stepPosition = Animated.divide(this.scrollX, width);
-      return (
-        <Block row center middle style={styles.stepsContainer}>
-          {illustrations.map((item, index) => {
-            const opacity = stepPosition.interpolate({
-              inputRange: [index - 1, index, index + 1],
-              outputRange: [0.4, 1, 0.4],
-              extrapolate: "clamp"
-            });
-  
-            return (
-              <Block
-                animated
-                flex={false}
-                key={`step-${index}`}
-                color="gray"
-                style={[styles.steps, { opacity }]}
-              />
-            );
-          })}
-        </Block>
-      );
-    }
-  
     render() {
       const { navigation } = this.props;
   
@@ -232,20 +171,26 @@ class Welcome extends Component {
             </Text>
           </Block>
           <Block center middle>
-            {this.renderIllustrations()}
+            <Image
+              source={require("../assets/hero.png")}
+              resizeMode="contain"
+              style={{ width, height: height / 2, overflow: "visible" }}
+            />
           </Block>
           <Block middle flex={0.5} margin={[0, theme.sizes.padding * 2]}>
+            {/* TODO: Create login route */}
             <Button gradient onPress={() => navigation.navigate("Login")}>
               <Text center semibold white>
                 Anmelden
               </Text>
             </Button>
+            {/* TODO: Create signup route */}
             <Button shadow onPress={() => navigation.navigate("SignUp")}>
               <Text center semibold>
                 Registrieren
               </Text>
             </Button>
-            <Button styles={{backgroundColor: 'rgba(0,0,0,0)'}} onPress={() => this.setState({ showTerms: true })}>
+            <Button onPress={() => this.setState({ showTerms: true })}>
               <Text center caption gray>
                 Nutzungsbedingungen
               </Text>
@@ -257,25 +202,4 @@ class Welcome extends Component {
     }
   }
   
-  Welcome.defaultProps = {
-    illustrations: [
-      { id: 1, source: require("../assets/hero.png") }
-    ]
-  };
-  
-  export default Welcome;
-  
-  const styles = StyleSheet.create({
-    stepsContainer: {
-      position: "absolute",
-      bottom: theme.sizes.base * 3,
-      right: 0,
-      left: 0
-    },
-    steps: {
-      width: 5,
-      height: 5,
-      borderRadius: 5,
-      marginHorizontal: 2.5
-    }
-  });
+export default Welcome;
