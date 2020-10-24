@@ -33,22 +33,15 @@ export default class Login extends Component {
     this.setState({ loading: true });
 
     // check with backend API or with some static data
-    if (email !== (STUDENT_EMAIL || PROF_EMAIL)) {
-        Alert.alert("1");
-      errors.push("email");
-    }
-
-    if (password !== (STUDENT_PASSWORD || PROF_PASSWORD) ) {
-        Alert.alert("2");
-      errors.push("password");
-    }
-
-    this.setState({ errors, loading: false });
-
-    if (!errors.length) {
-        navigation.navigate("StudentDashboard");
-        if (email === STUDENT_EMAIL) {navigation.navigate("StudentDashboard")}
-        if (email === PROF_EMAIL) {navigation.navigate("ProfDashboard")}
+    if (email === STUDENT_EMAIL && password === STUDENT_PASSWORD) {
+      this.setState({ errors, loading: false });
+      navigation.navigate("StudentDashboard");
+    } else if (email === PROF_EMAIL && password === PROF_PASSWORD) {
+      this.setState({ errors, loading: false });
+      navigation.navigate("ProfDashboard")
+    } else {
+      this.setState({ errors, loading: false });
+      Alert.alert("Ihre eingegebenen Daten sind nicht korrekt. Falls Sie einen neuen Benutzer anlegen möchten, wenden Sie sich bitte an die IT-Administration Ihrer Hochschule");
     }
   }
 
