@@ -178,18 +178,17 @@ class Welcome extends Component {
             />
           </Block>
           <Block middle flex={0.5} margin={[0, theme.sizes.padding * 2]}>
-            {/* TODO: Create login route */}
             <Button gradient onPress={() => navigation.navigate("Login")}>
               <Text center semibold white>
                 Anmelden
               </Text>
             </Button>
             {/* TODO: Create signup route */}
-            <Button shadow onPress={() => navigation.navigate("SignUp")}>
+            {/* <Button shadow onPress={() => navigation.navigate("SignUp")}>
               <Text center semibold>
                 Registrieren
               </Text>
-            </Button>
+            </Button> */}
             <Button onPress={() => this.setState({ showTerms: true })}>
               <Text center caption gray>
                 Nutzungsbedingungen

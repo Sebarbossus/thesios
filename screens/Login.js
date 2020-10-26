@@ -24,6 +24,8 @@ export default class Login extends Component {
     loading: false
   };
 
+  static navigationOptions = {title: 'Anmeldung'};
+
   handleLogin() {
     const { navigation } = this.props;
     const { email, password } = this.state;
@@ -46,7 +48,6 @@ export default class Login extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
     const { loading, errors } = this.state;
     const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
 
