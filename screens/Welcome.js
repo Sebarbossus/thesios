@@ -183,12 +183,6 @@ class Welcome extends Component {
                 Anmelden
               </Text>
             </Button>
-            {/* TODO: Create signup route */}
-            {/* <Button shadow onPress={() => navigation.navigate("SignUp")}>
-              <Text center semibold>
-                Registrieren
-              </Text>
-            </Button> */}
             <Button onPress={() => this.setState({ showTerms: true })}>
               <Text center caption gray>
                 Nutzungsbedingungen

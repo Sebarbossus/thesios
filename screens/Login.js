@@ -10,11 +10,11 @@ import {
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
-const STUDENT_EMAIL = "student@iubh-fernstudium.de";
+const STUDENT_EMAIL = "s@i.de";
 const STUDENT_PASSWORD = "testpwd";
 
-const PROF_EMAIL = "prof@iubh-fernstudium.de";
-const PROF_PASSWORD = "supertest!";
+const PROF_EMAIL = "p@i.de";
+const PROF_PASSWORD = "xd";
 
 export default class Login extends Component {
   state = {
@@ -82,18 +82,6 @@ export default class Login extends Component {
                 </Text>
               )}
             </Button>
-
-            {/* TODO: Implement later on */}
-            {/* <Button onPress={() => navigation.navigate("Forgot")}>
-              <Text
-                gray
-                caption
-                center
-                style={{ textDecorationLine: "underline" }}
-              >
-                Passwort vergessen?
-              </Text>
-            </Button> */}
           </Block>
         </Block>
       </KeyboardAvoidingView>

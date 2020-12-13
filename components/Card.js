@@ -1,26 +1,32 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 
-import Block from "./Block";
 import { theme } from "../constants";
 
 export default class Card extends Component {
   render() {
-    const { color, style, children, ...props } = this.props;
-    const cardStyles = [styles.card, style];
-
-    return (
-      <Block color={color || theme.colors.white} style={cardStyles} {...props}>
-        {children}
-      </Block>
+    const { text, pressAction, navigation } = this.props;
+    return(
+      <TouchableOpacity onPress={() => {navigation.navigate(pressAction)}} style={styles.card}>
+        <View style={styles.inner}>
+          <Text>{text}</Text>
+        </View>
+      </TouchableOpacity>
     );
   }
 }
 
 export const styles = StyleSheet.create({
   card: {
-    borderRadius: theme.sizes.radius,
-    padding: theme.sizes.base + 4,
-    marginBottom: theme.sizes.base
+    width: '50%',
+    height: '40%',
+    padding: 5,
+    borderRadius: theme.sizes.radius
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#eee',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

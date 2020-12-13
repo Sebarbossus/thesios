@@ -8,6 +8,13 @@ import SignUp from "../screens/SignUp";
 import Login from "../screens/Login";
 import StudentDashboard from "../screens/student/StudentDashboard";
 import ProfDashboard from "../screens/teacher/ProfDashboard";
+import SearchMask from "../screens/student/SearchMask";
+import SearchDetail from "../screens/student/SearchDetail";
+import Profs from "../screens/student/Profs";
+import ProfDetail from "../screens/student/ProfDetail";
+import ProfPapers from "../screens/teacher/ProfPapers";
+import Interests from "../screens/teacher/Interests";
+import SecondReviewer from "../screens/teacher/SecondReviewer";
 
 import { theme } from "../constants";
 
@@ -18,6 +25,13 @@ const screens = createStackNavigator(
     Login,
     StudentDashboard,
     ProfDashboard,
+    SearchMask,
+    SearchDetail,
+    Profs,
+    ProfDetail,
+    Interests,
+    ProfPapers,
+    SecondReviewer
   },
   {
     defaultNavigationOptions: {
